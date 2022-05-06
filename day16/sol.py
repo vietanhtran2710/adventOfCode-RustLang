@@ -29,7 +29,6 @@ def go(packet):
                 totalPacketsLength += subPacketLength
                 startingIndex += subPacketLength
                 packetNum -= 1
-            return totalVersion + version, totalPacketsLength
         else:
             totalBits, startingIndex = int(packet[7:7 + 15], 2), 22
             totalPacketsLength += 15
@@ -39,7 +38,7 @@ def go(packet):
                 totalPacketsLength += subPacketLength
                 startingIndex += subPacketLength
                 totalBits -= subPacketLength
-            return totalVersion + version, totalPacketsLength
+        return totalVersion + version, totalPacketsLength
 
 result, _ = go(binary)
 print(result)
